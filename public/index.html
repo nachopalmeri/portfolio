@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignacio Palmeri - Backend Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #EDEDED;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* REGLA DEL CONTENEDOR CENTRAL */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid #1F1F1F;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        nav a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 32px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #EDEDED;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+        }
+
+        .hero-label {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* BENTO GRID MATEMÁTICO */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Sistema de 12 columnas perfecto */
+        .col-7 { grid-column: span 7; }
+        .col-5 { grid-column: span 5; }
+        .col-4 { grid-column: span 4; }
+
+        @media (max-width: 768px) {
+            .col-7, .col-5, .col-4 {
+                grid-column: span 12;
+            }
+        }
+
+        /* Tarjetas */
+        .card {
+            background-color: #090909;
+            border: 1px solid #1F1F1F;
+            border-radius: 12px;
+            padding: 32px;
+            height: 100%;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #333333;
+        }
+
+        .card-header {
+            margin-bottom: 16px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .card-large .card-title {
+            font-size: 32px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: #888888;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #666666;
+            background-color: #0f0f0f;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #1F1F1F;
+        }
+
+        /* Stack Section */
+        .stack-section {
+            margin-top: 64px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+        }
+
+        .stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stack-item {
+            font-size: 14px;
+            color: #666666;
+            padding: 8px 16px;
+            border: 1px solid #1F1F1F;
+            border-radius: 8px;
+            background-color: #090909;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px 0;
+            margin-top: 64px;
+            border-top: 1px solid #1F1F1F;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-link {
+            color: #EDEDED;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        .contact-link:hover {
+            opacity: 0.7;
+        }
+
+        .contact-link::after {
+            content: '->';
+            transition: transform 0.2s ease;
+        }
+
+        .contact-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .social-links a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #EDEDED;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <span class="logo">IP</span>
+                <nav>
+                    <a href="#work">Work</a>
+                    <a href="#stack">Stack</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <p class="hero-label">Backend Developer</p>
+            <h1 class="hero-title">IGNACIO<br>PALMERI</h1>
+            <p class="hero-subtitle">Backend Developer & Web3 Architect</p>
+        </section>
+
+        <!-- Bento Grid - 12 COLUMNAS PERFECTAS -->
+        <!-- Fila 1: 7 + 5 = 12 -->
+        <div class="bento-grid" id="work">
+            <!-- Item 1: FulboTracker Pro - 7 columnas -->
+            <div class="col-7">
+                <div class="card card-large">
+                    <div class="card-header">
+                        <p class="card-label">Gestión deportiva y analítica financiera</p>
+                        <h3 class="card-title">FulboTracker Pro</h3>
+                        <p class="card-description">
+                            Dashboard de estadísticas, lógica de cálculo de participación de costos y persistencia de datos para torneos y ligas.
+                        </p>
+                    </div>
+                    <div class="card-tags">
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Vercel</span>
+                        <span class="tag">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: PolyTools - 5 columnas -->
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">PolyTools</h3>
+                        <p class="card-description">
+                            Automatización para Polymarket y análisis de mercados de predicción.
+                        </p>
+                    </div>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila 2: 4 + 4 + 4 = 12 -->
+        <div class="bento-grid">
+            <!-- Item 3: Backend Automation - 4 columnas -->
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Backend Automation</h3>
+                        <p class="card-description">
+                            Scripts en Python para optimización de tareas.
+                        </p>
+                    </div>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Selenium</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: DApp Registro - 4 columnas -->
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DApp Registro</h3>
+                        <p class="card-description">
+                            Smart contracts en Base Network para registros inmutables.
+                        </p>
+                    </div>
+                    <div class="card-tags">
+                        <span class="tag">Solidity</span>
+                        <span class="tag">Web3.py</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: Stack Tecnológico - 4 columnas -->
+            <div class="col-4">
+                <div class="card" id="stack">
+                    <div class="card-header">
+                        <h3 class="card-title">Stack</h3>
+                        <p class="card-description" style="margin-bottom: 16px;">
+                            Tecnologías que uso diariamente.
+                        </p>
+                    </div>
+                    <div class="card-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Solidity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <a href="mailto:nachopalmeri@gmail.com" class="contact-link">Contactar</a>
+                <div class="social-links">
+                    <a href="https://github.com/nachopalmeri" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ignacio-palmeri-64035b378/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
