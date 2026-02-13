@@ -3,7 +3,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ignacio Palmeri | Backend Developer",
-  description: "Python • Web3 • Automatización",
+  description: "Backend Developer especializado en Python, Web3 y automatización. Construyo herramientas que resuelven problemas reales.",
+  keywords: ["Backend Developer", "Python", "Web3", "Solidity", "Automation"],
+  authors: [{ name: "Ignacio Palmeri" }],
+  openGraph: {
+    title: "Ignacio Palmeri | Backend Developer",
+    description: "Backend Developer especializado en Python, Web3 y automatización.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -12,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body>{children}</body>
+    <html lang="es" className="dark">
+      <body className="bg-black text-[#F5F5F7]">{children}</body>
     </html>
   );
 }
