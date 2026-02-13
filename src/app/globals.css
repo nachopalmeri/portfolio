@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --neon-green: #00ff88;
-  --neon-purple: #a855f7;
-  --neon-cyan: #22d3ee;
-  --dark-bg: #000000;
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #0f3460;
+  --highlight: #e94560;
+  --text: #333;
+  --text-light: #f5f5f5;
 }
 
 @theme inline {
-  --color-background: var(--dark-bg);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-mono);
 }
 
 * {
@@ -20,83 +20,71 @@
 }
 
 body {
-  background: #000;
-  color: #fff;
-  font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
+  background: #fafafa;
+  color: #1a1a1a;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
 }
 
-.font-mono {
-  font-family: var(--font-mono), monospace;
+.section-padding {
+  padding: 80px 20px;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #00ff88 0%, #22d3ee 50%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.glow-green {
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.glow-purple {
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.3);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.grid-bg {
-  background-image: 
-    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-.card-hover {
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #1a1a2e;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+.btn-primary:hover {
+  background: #e94560;
+  transform: translateY(-2px);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.section-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #f0f0f0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #555;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 ::-webkit-scrollbar {
@@ -104,10 +92,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00ff88;
+  background: #1a1a2e;
   border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 16px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
 }
