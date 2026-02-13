@@ -10,7 +10,7 @@ const projects = [
     stack: ["Next.js", "Vercel", "Tailwind CSS", "Data Management"],
     span: "col-span-2 row-span-2",
     featured: true,
-    link: "#",
+    link: "https://fulbotracker.vercel.app/",
   },
   {
     title: "PolyTools",
@@ -98,15 +98,9 @@ export default function Home() {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[180px]">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className={`${project.span} relative group`}
-              >
-                <div className="relative h-full p-8 bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] overflow-hidden transition-all duration-500 hover:border-[#333333]">
+            {projects.map((project, index) => {
+              const CardContent = (
+                <>
                   {/* Radial glow effect */}
                   <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#0070f3]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   
@@ -149,9 +143,36 @@ export default function Home() {
                   <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                     <ArrowUpRight className="text-[#0070f3]" />
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </>
+              );
+
+              const cardClasses = "relative h-full p-8 bg-[#0A0A0A] rounded-2xl border border-[#1F1F1F] overflow-hidden transition-all duration-500 hover:border-[#333333] cursor-pointer block";
+
+              return (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className={`${project.span} relative group`}
+                >
+                  {project.link ? (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cardClasses}
+                    >
+                      {CardContent}
+                    </a>
+                  ) : (
+                    <div className={cardClasses}>
+                      {CardContent}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
