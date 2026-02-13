@@ -1,61 +1,54 @@
-"use client";
-
 const projects = [
   {
     title: "PolyTools",
-    problem: "Traders necesitaban herramientas de análisis para Polymarket.",
-    what: "Desarrollé suite de herramientas para trading con Python y APIs.",
-    stack: "Python • Telegram API • Polymarket API",
+    problem: "Traders sin herramientas de análisis para mercados predictivos.",
+    solution: "Suite de análisis con Python + APIs de Polymarket.",
+    stack: "Python, Polymarket API",
     link: "https://polytools-omega.vercel.app/",
+    learn: "Integración compleja de APIs financieras.",
   },
   {
-    title: "Telegram Wallet Tracker",
-    problem: "Dificultad para seguir wallets de traders.",
-    what: "Bot de Telegram que alerta en tiempo real sobre transacciones.",
-    stack: "Python • Telegram Bot API",
+    title: "Wallet Tracker",
+    problem: "Seguimiento manual de wallets de traders.",
+    solution: "Bot de Telegram con alertas en tiempo real.",
+    stack: "Python, Telegram Bot API",
+    learn: "Automatización de monitoreo blockchain.",
   },
   {
-    title: "DApp Registro Blockchain",
-    problem: "Registros no verificables.",
-    what: "Smart contract en Base Network para registros inmutables.",
-    stack: "Solidity • Web3.py • Base Network",
+    title: "DApp Registro",
+    problem: "Falta de verificabilidad en registros.",
+    solution: "Smart contract para registros inmutables en Base.",
+    stack: "Solidity, Web3.py, Base",
+    learn: "DeFi y contratos inteligentes.",
   },
   {
     title: "Landing Pages",
-    problem: "Negocios sin presencia web.",
-    what: "Desarrollo de páginas web profesionales.",
-    stack: "JavaScript • HTML/CSS • Figma",
+    problem: "Negocios sin presencia web profesional.",
+    solution: "Sitios web rápidos y funcionales.",
+    stack: "JavaScript, HTML/CSS",
+    learn: "UX directo y priorización.",
   },
 ];
-
-const skills = {
-  "Backend": ["Python", "Web3", "Solidity"],
-  "Herramientas": ["Telegram Bots", "APIs", "Git"],
-  "Otros": ["Análisis de Datos", "Excel"],
-};
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Hero */}
-      <header className="max-w-3xl mx-auto px-6 pt-32 pb-16">
-        <p className="text-sm text-gray-500 mb-4">Buenos Aires, Argentina</p>
-        <h1 className="text-4xl font-bold mb-4">Ignacio Palmeri</h1>
-        <p className="text-xl text-gray-600 mb-6">Backend Developer</p>
-        <p className="text-gray-600 max-w-lg">
-          Python, Web3 y automatización. Estudiando Gestión de TI en UADE.
+      <header className="max-w-2xl mx-auto px-6 pt-24 pb-16">
+        <h1 className="text-3xl font-semibold mb-2">Ignacio Palmeri</h1>
+        <p className="text-lg text-gray-600 mb-4">Backend Developer</p>
+        <p className="text-gray-600">
+          Python, Web3, automatización. Construyo herramientas que resuelven problemas reales.
         </p>
       </header>
 
-      {/* Projects */}
-      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-lg font-semibold mb-8">Proyectos</h2>
+      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
+        <h2 className="text-base font-semibold mb-8">Proyectos</h2>
         
-        <div className="space-y-12">
+        <div className="space-y-10">
           {projects.map((project, i) => (
             <article key={i}>
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-lg">{project.title}</h3>
+              <div className="flex justify-between items-baseline mb-2">
+                <h3 className="font-medium">{project.title}</h3>
                 {project.link && (
                   <a 
                     href={project.link} 
@@ -67,54 +60,34 @@ export default function Home() {
                   </a>
                 )}
               </div>
-              <p className="text-gray-600 mb-1">{project.problem}</p>
-              <p className="text-gray-600 mb-2">{project.what}</p>
-              <p className="text-sm text-gray-500">{project.stack}</p>
+              <p className="text-gray-600 text-sm mb-1">{project.problem}</p>
+              <p className="text-gray-600 text-sm mb-1">{project.solution}</p>
+              <p className="text-gray-500 text-sm mb-1">{project.learn}</p>
+              <p className="text-gray-400 text-xs">{project.stack}</p>
             </article>
           ))}
         </div>
       </section>
 
-      {/* About */}
-      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-lg font-semibold mb-4">Sobre mí</h2>
-        <p className="text-gray-600 max-w-lg">
-          Estudiando LIC en Gestión de Tecnología de la Información (UADE). 
-          Autodidacta. Busco mi primera experiencia profesional en tech.
+      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
+        <h2 className="text-base font-semibold mb-4">Sobre mí</h2>
+        <p className="text-gray-600 text-sm">
+          Estudiante de Gestión de TI en UADE. Autodidacta. Busco primera experiencia 
+          profesional donde pueda aportar y seguir creciendo.
         </p>
       </section>
 
-      {/* Skills */}
-      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-lg font-semibold mb-6">Skills</h2>
-        
-        <div className="grid grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category}>
-              <p className="text-sm text-gray-500 mb-2">{category}</p>
-              <ul className="space-y-1">
-                {items.map((item, i) => (
-                  <li key={i} className="text-gray-700">{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-lg font-semibold mb-4">Contacto</h2>
-        <div className="flex gap-6">
+      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
+        <h2 className="text-base font-semibold mb-4">Contacto</h2>
+        <div className="flex gap-6 text-sm">
           <a href="https://github.com/nachopalmeri" className="text-gray-600 hover:text-gray-900">GitHub</a>
           <a href="https://www.linkedin.com/in/ignacio-palmeri-64035b378/" className="text-gray-600 hover:text-gray-900">LinkedIn</a>
-          <a href="tel:+5491155090832" className="text-gray-600 hover:text-gray-900">+54 9 11 5509-0832</a>
+          <span className="text-gray-600">nachopalmeri@gmail.com</span>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="max-w-3xl mx-auto px-6 py-8 text-sm text-gray-400">
-        © 2024 Ignacio Palmeri
+      <footer className="max-w-2xl mx-auto px-6 py-8 text-xs text-gray-400">
+        Buenos Aires, Argentina
       </footer>
     </div>
   );
