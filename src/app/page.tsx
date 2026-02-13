@@ -1,94 +1,199 @@
 const projects = [
   {
     title: "PolyTools",
-    problem: "Traders sin herramientas de análisis para mercados predictivos.",
-    solution: "Suite de análisis con Python + APIs de Polymarket.",
-    stack: "Python, Polymarket API",
+    description: "Suite de análisis para traders de mercados predictivos. Integración compleja de APIs financieras.",
+    stack: ["Python", "Polymarket API"],
     link: "https://polytools-omega.vercel.app/",
-    learn: "Integración compleja de APIs financieras.",
   },
   {
     title: "Wallet Tracker",
-    problem: "Seguimiento manual de wallets de traders.",
-    solution: "Bot de Telegram con alertas en tiempo real.",
-    stack: "Python, Telegram Bot API",
-    learn: "Automatización de monitoreo blockchain.",
+    description: "Bot de Telegram con alertas en tiempo real sobre transacciones de wallets.",
+    stack: ["Python", "Telegram Bot API"],
+    link: null,
   },
   {
     title: "DApp Registro",
-    problem: "Falta de verificabilidad en registros.",
-    solution: "Smart contract para registros inmutables en Base.",
-    stack: "Solidity, Web3.py, Base",
-    learn: "DeFi y contratos inteligentes.",
+    description: "Smart contract en Base Network para registros inmutables y verificables.",
+    stack: ["Solidity", "Web3.py", "Base"],
+    link: null,
   },
   {
     title: "Landing Pages",
-    problem: "Negocios sin presencia web profesional.",
-    solution: "Sitios web rápidos y funcionales.",
-    stack: "JavaScript, HTML/CSS",
-    learn: "UX directo y priorización.",
+    description: "Sitios web profesionales para negocios. UX directo y priorización.",
+    stack: ["JavaScript", "HTML/CSS"],
+    link: null,
   },
 ];
 
+function ArrowUpRight({ className }: { className?: string }) {
+  return (
+    <svg 
+      className={className} 
+      width="16" 
+      height="16" 
+      viewBox="0 0 16 16" 
+      fill="none"
+    >
+      <path 
+        d="M4 12L12 4M12 4H6M12 4V10" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ProjectCard({ 
+  title, 
+  description, 
+  stack, 
+  link 
+}: { 
+  title: string; 
+  description: string; 
+  stack: string[]; 
+  link: string | null;
+}) {
+  const CardContent = (
+    <>
+      <div className="flex items-start justify-between mb-6">
+        <h3 className="text-xl font-medium text-zinc-100">{title}</h3>
+        {link && (
+          <ArrowUpRight className="text-zinc-500 group-hover:text-blue-400 transition-colors duration-200" />
+        )}
+      </div>
+      
+      <p className="text-zinc-400 text-sm leading-relaxed mb-8">
+        {description}
+      </p>
+      
+      <div className="flex flex-wrap gap-2">
+        {stack.map((tech) => (
+          <span 
+            key={tech} 
+            className="text-xs text-zinc-500 font-mono"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </>
+  );
+
+  const className = "group block p-8 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all duration-200";
+
+  if (link) {
+    return (
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {CardContent}
+      </a>
+    );
+  }
+
+  return (
+    <div className={className}>
+      {CardContent}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <header className="max-w-2xl mx-auto px-6 pt-24 pb-16">
-        <h1 className="text-3xl font-semibold mb-2">Ignacio Palmeri</h1>
-        <p className="text-lg text-gray-600 mb-4">Backend Developer</p>
-        <p className="text-gray-600">
-          Python, Web3, automatización. Construyo herramientas que resuelven problemas reales.
-        </p>
-      </header>
-
-      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-base font-semibold mb-8">Proyectos</h2>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-blue-500/20">
+      <main className="max-w-6xl mx-auto px-6 lg:px-12">
         
-        <div className="space-y-10">
-          {projects.map((project, i) => (
-            <article key={i}>
-              <div className="flex justify-between items-baseline mb-2">
-                <h3 className="font-medium">{project.title}</h3>
-                {project.link && (
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-sm text-gray-500 hover:text-gray-900"
-                  >
-                    →
-                  </a>
-                )}
+        <section className="min-h-screen flex flex-col justify-center py-24">
+          <div className="space-y-6">
+            <p className="text-zinc-500 text-sm font-mono">
+              Buenos Aires, Argentina
+            </p>
+            
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white">
+              Ignacio Palmeri
+            </h1>
+            
+            <p className="text-xl sm:text-2xl text-zinc-300">
+              Backend Developer
+            </p>
+            
+            <p className="text-zinc-500 max-w-xl text-lg leading-relaxed">
+              Python, Web3, automatización. Construyo herramientas que resuelven problemas reales.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-24 border-t border-zinc-900">
+          <div className="mb-16">
+            <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-wider mb-2">
+              Proyectos
+            </h2>
+            <p className="text-zinc-400">
+              Herramientas construidas con código.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        </section>
+
+        <section className="py-24 border-t border-zinc-900">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-wider mb-6">
+                Sobre mí
+              </h2>
+              <p className="text-zinc-300 text-lg leading-relaxed max-w-lg">
+                Estudiante de Gestión de TI en UADE. Autodidacta. Busco primera experiencia 
+                profesional donde pueda aportar y seguir creciendo.
+              </p>
+            </div>
+            
+            <div>
+              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-wider mb-6">
+                Contacto
+              </h2>
+              <div className="space-y-4">
+                <a 
+                  href="https://github.com/nachopalmeri" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block text-zinc-300 hover:text-white transition-colors duration-200"
+                >
+                  GitHub
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/ignacio-palmeri-64035b378/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block text-zinc-300 hover:text-white transition-colors duration-200"
+                >
+                  LinkedIn
+                </a>
+                <span className="block text-zinc-500">
+                  nachopalmeri@gmail.com
+                </span>
               </div>
-              <p className="text-gray-600 text-sm mb-1">{project.problem}</p>
-              <p className="text-gray-600 text-sm mb-1">{project.solution}</p>
-              <p className="text-gray-500 text-sm mb-1">{project.learn}</p>
-              <p className="text-gray-400 text-xs">{project.stack}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+            </div>
+          </div>
+        </section>
 
-      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-base font-semibold mb-4">Sobre mí</h2>
-        <p className="text-gray-600 text-sm">
-          Estudiante de Gestión de TI en UADE. Autodidacta. Busco primera experiencia 
-          profesional donde pueda aportar y seguir creciendo.
-        </p>
-      </section>
-
-      <section className="max-w-2xl mx-auto px-6 py-12 border-t border-gray-100">
-        <h2 className="text-base font-semibold mb-4">Contacto</h2>
-        <div className="flex gap-6 text-sm">
-          <a href="https://github.com/nachopalmeri" className="text-gray-600 hover:text-gray-900">GitHub</a>
-          <a href="https://www.linkedin.com/in/ignacio-palmeri-64035b378/" className="text-gray-600 hover:text-gray-900">LinkedIn</a>
-          <span className="text-gray-600">nachopalmeri@gmail.com</span>
-        </div>
-      </section>
-
-      <footer className="max-w-2xl mx-auto px-6 py-8 text-xs text-gray-400">
-        Buenos Aires, Argentina
-      </footer>
+        <footer className="py-12 border-t border-zinc-900">
+          <p className="text-zinc-600 text-sm">
+            2024 — Ignacio Palmeri
+          </p>
+        </footer>
+        
+      </main>
     </div>
   );
 }
